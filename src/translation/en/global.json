@@ -1,0 +1,63 @@
+{
+  "lang": {
+    "English": "English",
+    "Japanese": "Japanese"
+  },
+  "sidebar": {
+    "staff": "Staff Setting",
+    "revervation": "Revervation Systems"
+  },
+  "headerBox": {
+    "title": "Schedule management",
+    "reservedItems": "Reserved items",
+    "years": "Years",
+    "selectMonth": "Select Months",
+    "selectWeek": "Select Weeks",
+    "national": "National Holidays",
+    "change": "Change",
+    "settings": "Settings",
+    "read": "Read",
+    "test": "Test 2 2024"
+  },
+  "selectMonth": {
+    "All": "All",
+    "1": "January",
+    "2": "February",
+    "3": "March",
+    "4": "April",
+    "5": "May",
+    "6": "June",
+    "7": "July",
+    "8": "August",
+    "9": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December"
+  },
+  "selectWeek": {
+    "All": "All",
+    "Day": "Day",
+    "Month": "Month",
+    "fire": "fire",
+    "water": "water",
+    "wood": "wood",
+    "Money": "Money",
+    "soil": "soil"
+  },
+  "test": {
+    "Test": "Test",
+    "Test2": "Test 2"
+  },
+  "selectYear": {
+    "2024": "2024",
+    "2023": "2023",
+    "2022": "2022",
+    "2021": "2021"
+  },
+  "revervation": {
+    "list": "List",
+    "addEdit": "Add / Edit",
+    "schedule": "Schedule",
+    "settings": "Settings"
+  }
+}

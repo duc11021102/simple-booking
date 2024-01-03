@@ -1,0 +1,63 @@
+{
+  "lang": {
+    "English": "英語",
+    "Japanese": "日本語"
+  },
+  "sidebar": {
+    "staff": "スタッフ設定",
+    "revervation": "回復システム"
+  },
+  "headerBox": {
+    "title": "スケジュール管理",
+    "reservedItems": "予約済みアイテム",
+    "years": "年",
+    "selectMonth": "月を選択",
+    "selectWeek": "週を選択",
+    "national": "祝日",
+    "change": "変化",
+    "settings": "設定",
+    "read": "読む",
+    "test": "テスト 2 2024"
+  },
+  "selectMonth": {
+    "All": "全て",
+    "1": "一月",
+    "2": "二月",
+    "3": "三月",
+    "4": "四月",
+    "5": "五月",
+    "6": "六月",
+    "7": "七月",
+    "8": "八月",
+    "9": "九月",
+    "10": "十月",
+    "11": "十一月",
+    "12": "十二月"
+  },
+  "selectWeek": {
+    "All": "全て",
+    "Day": "日",
+    "Month": "月",
+    "fire": "火",
+    "water": "水",
+    "wood": "木",
+    "Money": "お金",
+    "soil": "土壌"
+  },
+  "test": {
+    "Test": "テスト",
+    "Test2": "テスト 2"
+  },
+  "selectYear": {
+    "2024": "2024",
+    "2023": "2023",
+    "2022": "2022",
+    "2021": "2021"
+  },
+  "revervation": {
+    "list": "リスト",
+    "addEdit": "追加 / 編集",
+    "schedule": "スケジュール",
+    "settings": "設定"
+  }
+}
