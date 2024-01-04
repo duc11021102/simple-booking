@@ -46,50 +46,52 @@ const CalendarBox = () => {
     return className
   }
 
-  const customFormatShortWeekday = (locale, date) => {
-    // Lọc ra phần ngày không chứa chữ '日'
-    return date
-      .toLocaleDateString(locale, { weekday: "short" })
-      .replace("日", "")
+  // const customFormatDay = (locale, date) => {
+  //   return date.toLocaleDateString(locale, {
+  //     day: "numeric",
+  //     month: "numeric",
+  //   })
+  // }
+
+  const customFormatYear = (locale, date) => {
+    return new Intl.DateTimeFormat(locale, { month: "long" }).format(date)
   }
 
   // filter value - onclick day
   const allSchedules = data.allSchedules
+
   const onClickDayHandler = (value) => {
     scheduleCtx.showModal()
     const day = allSchedules.filter((day) => day.day === value.toDateString())
     // info of this day click
     scheduleCtx.setInfoDay(day[0])
     scheduleCtx.setSchedules(day[0].schedulesOfDay)
-    console.log(day[0])
-    // console.log(value.toDateString())
-    // console.log(typeof day)
-    // console.log(day.schedulesOfDay)
+    console.log(value.getDay())
+    // console.log(day[0])
   }
 
   return (
-    <div className="grid grid-cols-4 gap-4 mt-10">
+    <div className="grid grid-cols-3 3xl:grid-cols-4 gap-10 mt-10 w-fit ">
       {curentMonth.map((month) => (
-        <Calendar
-          tileClassName={tileClassName}
-          prevLabel=""
-          nextLabel=""
-          prev2Label=""
-          next2Label=""
-          minDetail="month"
-          defaultView="month"
-          onClickDay={onClickDayHandler}
-          onClickYear={() => {
-            return
-          }}
-          key={month}
-          locale={currentLang}
-          // locale="ja-JP"
-          calendarType="iso8601"
-          activeStartDate={new Date(currentYear, month - 1, 1)}
-          showNeighboringMonth={false}
-          formatShortWeekday={customFormatShortWeekday}
-        />
+        <div className="border border-gray-300 w-fit rounded-md" key={month}>
+          <Calendar
+            className="h-full"
+            tileClassName={tileClassName}
+            prevLabel=""
+            nextLabel=""
+            prev2Label=""
+            next2Label=""
+            minDetail="month"
+            defaultView="month"
+            onClickDay={onClickDayHandler}
+            locale={currentLang}
+            // locale="ja"
+            calendarType="iso8601"
+            activeStartDate={new Date(currentYear, month - 1, 1)}
+            showNeighboringMonth={false}
+            formatMonthYear={customFormatYear}
+          />
+        </div>
       ))}
     </div>
   )

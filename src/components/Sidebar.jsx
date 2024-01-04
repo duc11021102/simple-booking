@@ -23,7 +23,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`w-72 top-14 fixed h-screen shadow-xl shadow-right p-3 pl-1 flex flex-col gap-5 ease-in duration-100 transition-all ${
+      className={`w-72 top-12 fixed h-screen border-r-2 border-gray-200 p-3 pl-1 flex flex-col gap-5 ease-in duration-100 transition-all ${
         !isSideOpen ? "w-fit" : null
       } `}
     >

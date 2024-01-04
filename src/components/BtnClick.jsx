@@ -4,7 +4,7 @@ const BtnClick = (props) => {
       onClick={(value) => {
         props.onClick(value)
       }}
-      className="py-1 text-sm px-2 rounded-sm text-sky-600 border-sky-600 border hover:bg-sky-200 ease-out duration-200"
+      className="py-1 text-base px-2 rounded-sm text-white bg-blue-700 border border-blue-400 hover:bg-blue-800 ease-out duration-200 "
     >
       {props.children}
     </button>

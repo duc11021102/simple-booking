@@ -18,7 +18,7 @@ const SchedulePage = () => {
 
   return (
     <div
-      className={`px-10 py-4 w-full mt-12 bg-stone-50 min-h-screen ${
+      className={`px-10 py-4 w-full mt-12 bg-stone-100 min-h-screen ${
         isOpen ? "ml-72" : "ml-20"
       }`}
     >

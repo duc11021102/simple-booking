@@ -32,7 +32,7 @@ const Navbar = () => {
   }, [i18n.language])
 
   return (
-    <div className="w-full top-0 bg-white flex  justify-between items-center px-5 overflow-hidden fixed h-12 border-b-2 border-gray-200 ">
+    <div className="w-screen top-0 bg-white flex z-10 justify-between items-center px-5 overflow-hidden fixed h-12 border-b-2 border-gray-200 ">
       {sheduleCtx.openSide ? (
         <FiChevronsLeft
           onClick={() => {

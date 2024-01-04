@@ -54,7 +54,6 @@ const Dropdown = (props) => {
               <NavLink
                 to={option.link}
                 key={option.value}
-                active
                 className={({ isActive }) =>
                   isActive
                     ? `${navClass} bg-gray-300`

@@ -3,11 +3,15 @@ import { TimeField } from "@mui/x-date-pickers"
 import { useState, useContext } from "react"
 import ScheduleContext from "../store/schedule-context"
 const ScheduleItem = (props) => {
-  const [timeStart, setTimeStart] = useState(null)
-  const [timeEnd, setTimeEnd] = useState(null)
   // ctx
   const scheduleCtx = useContext(ScheduleContext)
   const schedule = props.schedule
+
+  //state content of one schedule
+  const [timeStart, setTimeStart] = useState(schedule.startTime)
+  const [timeEnd, setTimeEnd] = useState(schedule.endTime)
+  const [subject, setSubject] = useState(schedule.subject)
+  const [body, setBody] = useState(schedule.body)
 
   return (
     <Stack direction="row" spacing={2} sx={{}}>
@@ -37,24 +41,37 @@ const ScheduleItem = (props) => {
         className=" w-40"
         id="outlined-required"
         label="Subject"
+        value={subject}
+        onChange={(newValue) => {
+          setSubject(newValue)
+        }}
         variant="outlined"
         inputProps={{ style: { fontWeight: 600 } }}
       />
       <TextField
         required
         size="small"
-        className="w-96"
+        className="w-full"
         id="outlined-required"
         label="Body"
+        value={body}
+        onChange={(newValue) => {
+          setBody(newValue)
+        }}
         variant="outlined"
       />
       <Button
+        style={{
+          backgroundColor: "#dc2626",
+          color: "white",
+          border: "1px solid #ef4444",
+          width: "120px",
+        }}
         onClick={() => {
           scheduleCtx.deleteSchedule(schedule.id)
         }}
         size="medium"
         variant="outlined"
-        color="error"
       >
         Delete
       </Button>

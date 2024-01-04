@@ -35,11 +35,11 @@ const ScheduleBoxHeader = () => {
   //translate
   const { t } = useTranslation()
   return (
-    <div className="flex flex-col font-body ">
+    <div className="flex flex-col font-body">
       <h1 className="font-body text-2xl font-bold text-gray-700 mb-2 ">
         {t("headerBox.title")}
       </h1>
-      <section className="w-full bg-white pl-2 font-body">
+      <section className="w-full bg-white border-2  rounded-md border-gray-200 pl-2 font-body">
         {/**section 1 */}
         <div className="flex flex-row my-8 gap-5">
           <div className="flex items-center gap-3 text-gray-700">

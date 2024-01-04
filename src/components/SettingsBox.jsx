@@ -12,9 +12,13 @@ const SettingsBox = () => {
   // handler open off schedules
   const isOpenSchedules = day.isOpen
   const [isOpen, setIsOpen] = useState(isOpenSchedules)
-
+  // remove all schdule
+  const removeAllHandler = () => {
+    setIsOpen(false)
+    scheduleCtx.deleteAllSchedule()
+  }
   return (
-    <div className="w-fit rounded-md bg-white px-5 pt-10 pb-4 font-body flex flex-col gap-3">
+    <div className="w-2/3 h-2/3 rounded-md bg-white px-5 pt-10 pb-4 relative font-body flex flex-col gap-5">
       <div className="flex items-center gap-2">
         <input
           className="form-radio h-6 w-6 text-indigo-600 "
@@ -35,14 +39,14 @@ const SettingsBox = () => {
           <button
             onClick={() =>
               scheduleCtx.addSchedule({
-                id: Math.random.toString,
-                startTime: "09:30",
-                endTime: "10:30",
-                subject: "",
-                body: "",
+                id: Math.random().toString(),
+                startTime: new Date("2024-01-02T10:30:00+07:00"),
+                endTime: new Date("2024-01-02T11:30:00+07:00"),
+                subject: "Test",
+                body: "This is Test Body",
               })
             }
-            className="text-lg  text-sky-600 border-sky-600 border hover:bg-sky-200 ease-out duration-200   px-16 py-0 rounded-sm"
+            className="text-lg  text-white  bg-blue-700 hover:bg-blue-800 ease-out duration-200  px-16 py-0 rounded-sm"
           >
             Add
           </button>
@@ -55,9 +59,7 @@ const SettingsBox = () => {
           name=""
           id=""
           checked={!isOpen}
-          onChange={() => {
-            setIsOpen(false)
-          }}
+          onChange={removeAllHandler}
         />
         <h1 className="font-semibold text-lg text-gray-700">Off</h1>
       </div>
@@ -84,17 +86,17 @@ const SettingsBox = () => {
       )}
 
       {/** bottom */}
-      <div className="flex font-body gap-4 justify-center items-center mt-6">
+      <div className="flex w-full  absolute bottom-8 font-body gap-4 justify-center items-center">
         <button
           onClick={() => {
             scheduleCtx.offModal()
           }}
-          className="text-xl  text-stone-600 border-stone-600 border hover:bg-stone-200 ease-out duration-200   px-16 py-1 rounded-sm"
+          className="text-xl  text-gray-700 border border-gray-400 bg-stone-300 hover:bg-stone-400 ease-out duration-200   px-16 py-1 rounded-sm"
         >
           Cancel
         </button>
 
-        <button className="text-xl  text-sky-600 border-sky-600 border hover:bg-sky-200 ease-out duration-200   px-16 py-1 rounded-sm">
+        <button className="text-xl  text-white bg-blue-700  hover:bg-blue-800 ease-out duration-200  px-16 py-1 rounded-sm">
           Apply
         </button>
       </div>

@@ -14,7 +14,7 @@ const ScheduleContext = React.createContext({
   setSchedules: () => {},
   addSchedule: () => {},
   deleteSchedule: () => {},
-  deleteAll: () => {},
+  deleteAllSchedule: () => {},
   //-----------------
   showModal: () => {},
   offModal: () => {},
@@ -108,7 +108,7 @@ export const ScheduleContextProvider = (props) => {
   }
 
   const addScheduleHandler = (value) => {
-    setSchedules([...schedules, value])
+    setSchedules([value, ...schedules])
   }
 
   const deleteScheduleHandler = (id) => {
