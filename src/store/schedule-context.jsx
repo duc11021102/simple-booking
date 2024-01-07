@@ -5,7 +5,6 @@ const ScheduleContext = React.createContext({
   isYear: "2024",
   isMonth: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
   isSetting: true,
-  openSide: true,
   isShowModal: false,
   isShowHolidays: false,
   infoDay: {},
@@ -22,14 +21,12 @@ const ScheduleContext = React.createContext({
   offSetting: () => {},
   setYear: () => {},
   setMonth: () => {},
-  setIsOpenSide: () => {},
   showHolidays: () => {},
   setInfoDay: () => {},
 })
 
 export const ScheduleContextProvider = (props) => {
   const [showModal, setShowModal] = useState(false)
-  const [isOpenSide, setIsOpenSide] = useState(true)
   const [isSetting, setIsSetting] = useState(false)
   const [isYear, setIsYear] = useState("2024")
   const [showHolidays, setShowHolidays] = useState(false)
@@ -86,13 +83,6 @@ export const ScheduleContextProvider = (props) => {
       setIsMonth([value])
     }
   }
-  const setIsOpenSideHandler = (value) => {
-    if (value === true) {
-      setIsOpenSide(false)
-    } else {
-      setIsOpenSide(true)
-    }
-  }
 
   const showHolidayHandler = () => {
     setShowHolidays(!showHolidays)
@@ -126,7 +116,6 @@ export const ScheduleContextProvider = (props) => {
         isSetting: isSetting,
         isYear: isYear,
         isMonth: isMonth,
-        openSide: isOpenSide,
         isShowModal: showModal,
         isShowHolidays: showHolidays,
         infoDay: infoDay,
@@ -142,7 +131,6 @@ export const ScheduleContextProvider = (props) => {
         offSetting: offSettingHandler,
         setYear: setYearHandler,
         setMonth: setMonthHandler,
-        setIsOpenSide: setIsOpenSideHandler,
         showHolidays: showHolidayHandler,
       }}
     >

@@ -4,12 +4,12 @@ import ScheduleContext from "../store/schedule-context"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
+import { sideBarActions } from "../store/sideBar-slice"
 const Navbar = () => {
   //redux
   const isOpenSide = useSelector((state) => state.sideBar.isOpen)
   const dispatch = useDispatch()
-  //context
-  const sheduleCtx = useContext(ScheduleContext)
+
   // translate
   const { i18n } = useTranslation()
 
@@ -38,17 +38,17 @@ const Navbar = () => {
 
   return (
     <div className="w-screen top-0 bg-white flex z-10 justify-between items-center px-5 overflow-hidden fixed h-12 border-b-2 border-gray-200 ">
-      {sheduleCtx.openSide ? (
+      {isOpenSide ? (
         <FiChevronsLeft
           onClick={() => {
-            sheduleCtx.setIsOpenSide(true)
+            dispatch(sideBarActions.toggle())
           }}
           className="font-bold text-3xl mr-4 text-gray-700  hover:bg-gray-100 rounded-md "
         />
       ) : (
         <FiChevronsRight
           onClick={() => {
-            sheduleCtx.setIsOpenSide(false)
+            dispatch(sideBarActions.toggle())
           }}
           className="font-bold text-3xl mr-4 text-gray-700 hover:bg-gray-100 rounded-md  "
         />

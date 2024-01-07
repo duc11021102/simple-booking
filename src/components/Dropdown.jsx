@@ -1,18 +1,17 @@
-import { useState, useContext } from "react"
+import { useState } from "react"
 import { FaChevronDown } from "react-icons/fa6"
 import { MdOutlineStorefront } from "react-icons/md"
 import { FiMonitor } from "react-icons/fi"
 import { NavLink } from "react-router-dom"
-import ScheduleContext from "../store/schedule-context"
 import { useTranslation } from "react-i18next"
-
+import { useSelector } from "react-redux"
 const Dropdown = (props) => {
   //data
   const options = props.options
-  //ctx
+  //handler dropdown
   const [isOpen, setIsOpen] = useState(false)
-  const scheduleCtx = useContext(ScheduleContext)
-  const isSideOpen = scheduleCtx.openSide
+  //redux
+  const isSideOpen = useSelector((state) => state.sideBar.isOpen)
   //translate
   const { t } = useTranslation()
   //css navlink

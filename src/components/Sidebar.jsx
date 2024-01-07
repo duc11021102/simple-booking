@@ -1,6 +1,7 @@
 import Dropdown from "./Dropdown"
 import { useContext } from "react"
 import ScheduleContext from "../store/schedule-context"
+import { useSelector } from "react-redux"
 const Sidebar = () => {
   const optionsStaff = [
     { value: "option1", label: "Option 1", link: "/option1" },
@@ -18,9 +19,8 @@ const Sidebar = () => {
     console.log("Selected Option:", selectedOption)
   }
 
-  const scheduleCtx = useContext(ScheduleContext)
-  const isSideOpen = scheduleCtx.openSide
-
+  //redux
+  const isSideOpen = useSelector((state) => state.sideBar.isOpen)
   return (
     <div
       className={`w-72 top-12 fixed h-screen bg-white border-r-2 border-gray-200 p-3 pl-1 flex flex-col gap-5 ease-in duration-100 transition-all ${

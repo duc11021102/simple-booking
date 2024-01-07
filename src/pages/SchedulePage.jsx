@@ -1,15 +1,14 @@
-import { lazy, useContext, useEffect, Suspense } from "react"
+import { useContext, useEffect } from "react"
 import ScheduleContext from "../store/schedule-context"
 import CalendarBox from "../components/CalenderBox"
 import ScheduleBoxHeader from "../components/ScheduleBoxHeader"
-// const CalendarBox = lazy(() => import("../components/CalenderBox"))
-// const ScheduleManagement = lazy(() => import("../components/ScheduleBoxHeader"))
-
+import { useSelector } from "react-redux"
 const SchedulePage = () => {
+  //ctx
   const scheduleCtx = useContext(ScheduleContext)
-  const isOpen = scheduleCtx.openSide
   const show = scheduleCtx.isShowModal
-
+  // redux
+  const isOpenSide = useSelector((state) => state.sideBar.isOpen)
   //stop scroll when open  popup
   useEffect(() => {
     if (show) {
@@ -22,13 +21,11 @@ const SchedulePage = () => {
   return (
     <div
       className={`px-10 py-4 w-full mt-12 bg-stone-100 min-h-screen ${
-        isOpen ? "ml-72" : "ml-20"
+        isOpenSide ? "ml-72" : "ml-20"
       }`}
     >
-      {/* <Suspense fallback={<div>Loading...</div>}> */}
       <ScheduleBoxHeader />
       <CalendarBox />
-      {/* </Suspense> */}
     </div>
   )
 }
