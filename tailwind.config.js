@@ -19,11 +19,11 @@ export default {
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
       '3xl': '1920px',
-      // => @media (min-width: 2056px) { ... }
+      // => @media (min-width: 2084px) { ... }
     },
     extend: {},
     fontFamily: {
-      'body': ["Roboto"],
+      'body': ["Noto Sans"],
     },
   },
 

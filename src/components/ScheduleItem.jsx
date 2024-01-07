@@ -37,8 +37,9 @@ const ScheduleItem = (props) => {
       />
       <TextField
         required
+        spellCheck="false"
         size="small"
-        className=" w-40"
+        className=" w-48"
         id="outlined-required"
         label="Subject"
         value={subject}
@@ -49,6 +50,7 @@ const ScheduleItem = (props) => {
         inputProps={{ style: { fontWeight: 600 } }}
       />
       <TextField
+        spellCheck="false"
         required
         size="small"
         className="w-full"

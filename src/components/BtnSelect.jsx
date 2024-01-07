@@ -11,7 +11,7 @@ const BtnSelect = (props) => {
       onChange={(e) => {
         props.onChangeValue(e.target.value)
       }}
-      className="p-1 rounded-sm border border-gray-400 bg-stone-300 text-gray-700 font-body focus:outline-none "
+      className="p-1 rounded-sm border border-gray-400 bg-stone-200 text-gray-700 font-body focus:outline-none "
     >
       {datas.map((data) => (
         <option

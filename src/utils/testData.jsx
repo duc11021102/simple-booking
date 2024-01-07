@@ -34,7 +34,7 @@ const data = {
     {
       day: "Tue Jan 02 2024",
       id: 2,
-      isOpen: false,
+      isOpen: true,
       schedulesOfDay: [
         {
           id: "s1",

@@ -14,7 +14,7 @@ const CalendarBox = () => {
   const curentMonth = scheduleCtx.isMonth
   // holidays
   const holidays = [
-    { month: 1, day: 1 },
+    { month: 1, day: 18 },
     { month: 2, day: 10 },
     { month: 3, day: 15 },
     { month: 4, day: 30 },
@@ -23,6 +23,13 @@ const CalendarBox = () => {
     { month: 7, day: 30 },
     { month: 8, day: 30 },
   ]
+  // take all schedules
+  const allSchedules = data.allSchedules
+
+  // filter days onl
+  const daysOpen = allSchedules.filter((day) => day.isOpen === true)
+  const arrDayOnl = daysOpen.map((day) => day.day) //['Mon Jan 01 2024', 'Tue Jan 02 2024']
+
   // Hàm để kiểm tra xem một ngày có phải là ngày holiday không
   const isSpecialDay = (date) =>
     holidays.some(
@@ -30,44 +37,40 @@ const CalendarBox = () => {
         date.getMonth() + 1 === specialDate.month &&
         date.getDate() === specialDate.day
     )
+
   // Hàm để xác định lớp CSS của ngày
   const tileClassName = ({ date }) => {
-    let className = ""
+    let className = "day"
 
     // Kiểm tra xem có phải là ngày đặc biệt không
     if (isSpecialDay(date) && scheduleCtx.isShowHolidays) {
-      className += "holidays"
+      className += " holidays"
     }
     // Kiểm tra xem có phải là ngày thứ 7 không
     if (date.getDay() === 6) {
       className += " saturday-green"
     }
-
+    // check if day onl
+    if (arrDayOnl.includes(date.toDateString())) {
+      className += " dayOpen"
+    }
     return className
   }
-
-  // const customFormatDay = (locale, date) => {
-  //   return date.toLocaleDateString(locale, {
-  //     day: "numeric",
-  //     month: "numeric",
-  //   })
-  // }
 
   const customFormatYear = (locale, date) => {
     return new Intl.DateTimeFormat(locale, { month: "long" }).format(date)
   }
 
   // filter value - onclick day
-  const allSchedules = data.allSchedules
-
   const onClickDayHandler = (value) => {
     scheduleCtx.showModal()
     const day = allSchedules.filter((day) => day.day === value.toDateString())
     // info of this day click
     scheduleCtx.setInfoDay(day[0])
     scheduleCtx.setSchedules(day[0].schedulesOfDay)
-    console.log(value.getDay())
-    // console.log(day[0])
+    // console.log(value.toDateString())
+    // console.log(daysOpen)
+    // console.log(arrDayOnl.includes(value.toDateString()))
   }
 
   return (
@@ -75,7 +78,7 @@ const CalendarBox = () => {
       {curentMonth.map((month) => (
         <div className="border border-gray-300 w-fit rounded-md" key={month}>
           <Calendar
-            className="h-full"
+            className="h-full "
             tileClassName={tileClassName}
             prevLabel=""
             nextLabel=""
@@ -85,7 +88,6 @@ const CalendarBox = () => {
             defaultView="month"
             onClickDay={onClickDayHandler}
             locale={currentLang}
-            // locale="ja"
             calendarType="iso8601"
             activeStartDate={new Date(currentYear, month - 1, 1)}
             showNeighboringMonth={false}

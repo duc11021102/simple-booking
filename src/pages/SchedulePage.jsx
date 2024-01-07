@@ -1,7 +1,10 @@
-import CalendarBox from "../components/CalenderBox"
-import ScheduleManagement from "../components/ScheduleBoxHeader"
-import { useContext, useEffect } from "react"
+import { lazy, useContext, useEffect, Suspense } from "react"
 import ScheduleContext from "../store/schedule-context"
+import CalendarBox from "../components/CalenderBox"
+import ScheduleBoxHeader from "../components/ScheduleBoxHeader"
+// const CalendarBox = lazy(() => import("../components/CalenderBox"))
+// const ScheduleManagement = lazy(() => import("../components/ScheduleBoxHeader"))
+
 const SchedulePage = () => {
   const scheduleCtx = useContext(ScheduleContext)
   const isOpen = scheduleCtx.openSide
@@ -22,8 +25,10 @@ const SchedulePage = () => {
         isOpen ? "ml-72" : "ml-20"
       }`}
     >
-      <ScheduleManagement />
+      {/* <Suspense fallback={<div>Loading...</div>}> */}
+      <ScheduleBoxHeader />
       <CalendarBox />
+      {/* </Suspense> */}
     </div>
   )
 }
