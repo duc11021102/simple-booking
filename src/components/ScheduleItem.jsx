@@ -1,10 +1,11 @@
 import { Stack, TextField, Button } from "@mui/material"
 import { TimeField } from "@mui/x-date-pickers"
-import { useState, useContext } from "react"
-import ScheduleContext from "../store/schedule-context"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { schedulesActions } from "../store/schedules-slice"
 const ScheduleItem = (props) => {
-  // ctx
-  const scheduleCtx = useContext(ScheduleContext)
+  //redux
+  const dispatch = useDispatch()
   const schedule = props.schedule
 
   //state content of one schedule
@@ -69,9 +70,7 @@ const ScheduleItem = (props) => {
           border: "1px solid #ef4444",
           width: "120px",
         }}
-        onClick={() => {
-          scheduleCtx.deleteSchedule(schedule.id)
-        }}
+        onClick={() => dispatch(schedulesActions.deleteSchedule(schedule.id))}
         size="medium"
         variant="outlined"
       >

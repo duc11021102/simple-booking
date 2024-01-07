@@ -1,6 +1,4 @@
 import Dropdown from "./Dropdown"
-import { useContext } from "react"
-import ScheduleContext from "../store/schedule-context"
 import { useSelector } from "react-redux"
 const Sidebar = () => {
   const optionsStaff = [

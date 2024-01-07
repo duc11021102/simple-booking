@@ -1,10 +1,9 @@
 import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi"
-import { useContext, useState, useEffect } from "react"
-import ScheduleContext from "../store/schedule-context"
+import { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
-import { useSelector } from "react-redux"
-import { useDispatch } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { sideBarActions } from "../store/sideBar-slice"
+
 const Navbar = () => {
   //redux
   const isOpenSide = useSelector((state) => state.sideBar.isOpen)

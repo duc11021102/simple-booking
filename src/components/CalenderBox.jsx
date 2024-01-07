@@ -4,7 +4,13 @@ import "../../src/index.css"
 import ScheduleContext from "../store/schedule-context"
 import { useTranslation } from "react-i18next"
 import data from "../utils/testData.jsx"
+import { useDispatch, useSelector } from "react-redux"
+import { popupActions } from "../store/popup-slice.jsx"
+import { schedulesActions } from "../store/schedules-slice.jsx"
 const CalendarBox = () => {
+  //redux
+  const dispatch = useDispatch()
+  const isShowHolidays = useSelector((state) => state.holidays.isShow)
   // language
   const { i18n } = useTranslation()
   const currentLang = i18n.language
@@ -43,7 +49,7 @@ const CalendarBox = () => {
     let className = "day"
 
     // Kiểm tra xem có phải là ngày đặc biệt không
-    if (isSpecialDay(date) && scheduleCtx.isShowHolidays) {
+    if (isSpecialDay(date) && isShowHolidays) {
       className += " holidays"
     }
     // Kiểm tra xem có phải là ngày thứ 7 không
@@ -63,11 +69,11 @@ const CalendarBox = () => {
 
   // filter value - onclick day
   const onClickDayHandler = (value) => {
-    scheduleCtx.showModal()
+    dispatch(popupActions.openModal())
     const day = allSchedules.filter((day) => day.day === value.toDateString())
     // info of this day click
     scheduleCtx.setInfoDay(day[0])
-    scheduleCtx.setSchedules(day[0].schedulesOfDay)
+    dispatch(schedulesActions.setSchedules(day[0].schedulesOfDay))
     // console.log(value.toDateString())
     // console.log(daysOpen)
     // console.log(arrDayOnl.includes(value.toDateString()))

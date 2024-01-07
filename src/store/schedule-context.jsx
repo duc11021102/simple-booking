@@ -4,32 +4,14 @@ import React from "react"
 const ScheduleContext = React.createContext({
   isYear: "2024",
   isMonth: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-  isSetting: true,
-  isShowModal: false,
-  isShowHolidays: false,
   infoDay: {},
-  //----------------
-  schedules: [],
-  setSchedules: () => {},
-  addSchedule: () => {},
-  deleteSchedule: () => {},
-  deleteAllSchedule: () => {},
-  //-----------------
-  showModal: () => {},
-  offModal: () => {},
-  showSetting: () => {},
-  offSetting: () => {},
   setYear: () => {},
   setMonth: () => {},
-  showHolidays: () => {},
   setInfoDay: () => {},
 })
 
 export const ScheduleContextProvider = (props) => {
-  const [showModal, setShowModal] = useState(false)
-  const [isSetting, setIsSetting] = useState(false)
   const [isYear, setIsYear] = useState("2024")
-  const [showHolidays, setShowHolidays] = useState(false)
   const [isMonth, setIsMonth] = useState([
     "1",
     "2",
@@ -45,20 +27,7 @@ export const ScheduleContextProvider = (props) => {
     "12",
   ])
   const [infoDay, setInfoDay] = useState({})
-  const [schedules, setSchedules] = useState([])
 
-  const showModalHandler = () => {
-    setShowModal(true)
-  }
-  const offModalHandler = () => {
-    setShowModal(false)
-  }
-  const showSettingHandler = () => {
-    setIsSetting(true)
-  }
-  const offSettingHandler = () => {
-    setIsSetting(false)
-  }
   const setYearHandler = (value) => {
     setIsYear(value)
   }
@@ -84,54 +53,19 @@ export const ScheduleContextProvider = (props) => {
     }
   }
 
-  const showHolidayHandler = () => {
-    setShowHolidays(!showHolidays)
-  }
-
   const setInfoDayHandler = (value) => {
     setInfoDay(value)
   }
 
-  //--------------------------
-  const setSchedulesHandler = (value) => {
-    setSchedules(value)
-  }
-
-  const addScheduleHandler = (value) => {
-    setSchedules([value, ...schedules])
-  }
-
-  const deleteScheduleHandler = (id) => {
-    const updateSchedules = schedules.filter((schedule) => schedule.id != id)
-    setSchedules(updateSchedules)
-  }
-
-  const deleteAllScheduleHandler = () => {
-    setSchedules([])
-  }
-  //--------------------------
   return (
     <ScheduleContext.Provider
       value={{
-        isSetting: isSetting,
         isYear: isYear,
         isMonth: isMonth,
-        isShowModal: showModal,
-        isShowHolidays: showHolidays,
         infoDay: infoDay,
-        schedules: schedules,
-        setSchedules: setSchedulesHandler,
-        addSchedule: addScheduleHandler,
-        deleteSchedule: deleteScheduleHandler,
-        deleteAllSchedule: deleteAllScheduleHandler,
         setInfoDay: setInfoDayHandler,
-        showModal: showModalHandler,
-        offModal: offModalHandler,
-        showSetting: showSettingHandler,
-        offSetting: offSettingHandler,
         setYear: setYearHandler,
         setMonth: setMonthHandler,
-        showHolidays: showHolidayHandler,
       }}
     >
       {props.children}

@@ -4,7 +4,11 @@ import data from "../utils/valueBtnSelect"
 import ScheduleContext from "../store/schedule-context"
 import { useCallback, useContext, useState } from "react"
 import { useTranslation } from "react-i18next"
+import { useDispatch } from "react-redux"
+import { holidaysAction } from "../store/holidays-slice"
 const ScheduleBoxHeader = () => {
+  //redux
+  const dispatch = useDispatch()
   //state
   const [year, setYear] = useState("2024")
   const [month, setMonth] = useState("all")
@@ -19,14 +23,10 @@ const ScheduleBoxHeader = () => {
     setMonth(value)
   }, [])
 
-  // handler setting
-  const settingsHandler = useCallback(() => {
-    scheduleCtx.showModal()
-  }, [scheduleCtx])
   // handler read
   const readHandler = useCallback(() => {
-    scheduleCtx.showHolidays()
-  }, [scheduleCtx])
+    dispatch(holidaysAction.toggle())
+  }, [dispatch])
   // change all
   const changeAll = () => {
     scheduleCtx.setYear(year)
@@ -85,9 +85,7 @@ const ScheduleBoxHeader = () => {
           </div>
 
           <div className="flex  items-center  gap-3 text-gray-700">
-            <BtnClick onClick={settingsHandler}>
-              {t("headerBox.settings")}
-            </BtnClick>
+            <BtnClick>{t("headerBox.settings")}</BtnClick>
           </div>
 
           <div className="flex  items-center gap-3 text-gray-700">
